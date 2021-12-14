@@ -1,9 +1,6 @@
 package com.amigoscode.testing.customer;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,9 +12,11 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class Customer {
 
     @Id
+    @EqualsAndHashCode.Exclude
     private UUID id;
 
     @NotBlank
@@ -25,4 +24,5 @@ public class Customer {
 
     @NotBlank
     private String phoneNumber;
+
 }

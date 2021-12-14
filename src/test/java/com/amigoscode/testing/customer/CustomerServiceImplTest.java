@@ -74,7 +74,8 @@ class CustomerServiceImplTest {
             underTest.registerNewCustomer(customerRequest);
           //Then
         }).isInstanceOf(PaymentServiceException.class)
-          .hasMessage("Customer already registered with that phone number");
+          .hasMessage(String.format("Customer already registered with phone number [%s]",
+                  persistedCustomer.getPhoneNumber()));
 
     }
 }

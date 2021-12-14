@@ -25,10 +25,12 @@ public class CustomerServiceImpl implements CustomerService{
 
         if (optionalCustomer.isPresent()) {
             Customer customer = optionalCustomer.get();
-            if (customer.getName().equalsIgnoreCase(customerRequest.getName())) {
+            if (customer.equals(customerRequest)) {
                 return;
             } else {
-                throw new PaymentServiceException("Customer already registered with that phone number", null);
+                throw new PaymentServiceException(
+                        String.format("Customer already registered with phone number [%s]", customer.getPhoneNumber()
+                        ), null);
             }
         }
 
